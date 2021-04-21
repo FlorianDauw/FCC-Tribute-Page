@@ -1,4 +1,4 @@
-/*Variables*/
+/*--------------------------------------------------- VARIABLES ----------------------------------------------*/
 :root {
     /*Colors*/
     --primary-color: rgb(189, 0, 0);
@@ -14,11 +14,16 @@
     
     /*Font sizes*/
     --h1-font-size: 4em;
+    --text-font-size: 1.8em;
+    --img-caption-size: 1.5em;
 }
-
+/*-------------------------------------------------- MEDIA QUERIES -------------------------------------------------*/
 @media (max-width: 649px) {
     :root {
         --h1-font-size: 2.5em;
+        --text-font-size: 1.5em;
+        --img-caption-size: 1em;
+
         --glove-width: 35px;
         --glove-height: 25.45px;
         --glove-width-before: 12.5px;
@@ -27,6 +32,20 @@
         --glove-height-after: 18.75px;
     }
 
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: auto;
+    }
+
+    figure {
+        width: 100%;
+        margin: 0;
+    }
+
+
+    /*Gloves for small screens*/
     #boxing-glove-left::after {
         content: "";
         position: absolute;
@@ -69,10 +88,9 @@
     }
 }
 
-/* Animated gloves only on screens larger than 650px */
 @media (min-width: 650px) {
+    /*Animation enabled for screens larger than 650px*/
     #boxing-glove-right {
-        /* position: relative; */
         animation-name: knocking-right;
         animation-duration: 1.5s;
         animation-timing-function: ease-in;
@@ -80,13 +98,13 @@
     }
     
     #boxing-glove-left {
-        /* position: relative; */
         animation-name: knocking-left;
         animation-duration: 1.5s;
         animation-timing-function: ease-in;
         animation-iteration-count: infinite;
     }
 
+    /*Gloves for larger screens*/
     #boxing-glove-left::after {
         content: "";
         position: absolute;
@@ -129,14 +147,24 @@
     }
 }
 
+/*---------------------------------------------------- GENERAL ---------------------------------------*/
 body {
     text-align: center;
     font-size: 10px;
+    background-color: white;
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#main {
+    padding: 20px;
+    background-color: rgb(235, 235, 235);
+    border-radius: 3%;
 }
 
 img {
     display: block;
-    max-width: 100%;
+    max-width: 80%;
     height: auto;
     margin: auto;
 }
@@ -144,6 +172,20 @@ img {
 h1 {
     color: var(--primary-color);
     font-size: var(--h1-font-size);
+}
+
+p {
+    font-size: var(--text-font-size);
+}
+
+#img-div {
+    background-color: white;
+    padding: 10px;
+}
+
+#img-caption {
+    font-size: var(--img-caption-size);
+    margin-top: 1em;
 }
 
 .boxing-glove-container {
@@ -158,6 +200,34 @@ h1 {
     border-radius: 40%;
 }
 
+.bold {
+    font-weight: bold;
+}
+
+#boxing-glove-left {
+    position: relative;
+}
+
+#boxing-glove-right {
+    position: relative;
+}
+
+#title-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#tribute-info {
+    color: var(--secondary-color);
+}
+
+#tribute-link {
+    color: var(--secondary-color);
+}
+
+
+/*--------------------------------------------------- ANIMATIONS ---------------------------------------------*/
 @keyframes knocking-right {
     0% {
         left: 0px;
@@ -180,20 +250,4 @@ h1 {
     100% {
         right: 0px;
     }
-}
-
-#boxing-glove-left {
-    position: relative;
-}
-
-#boxing-glove-right {
-    position: relative;
-}
-
-
-
-#title-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
 }
